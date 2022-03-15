@@ -1,5 +1,5 @@
 export const colorApi = (color, text) => {
-    const url = "http://localhost:1000/getcolor";
+    const url = "http://52.18.205.130:1000/getcolor";
     return fetch(url, {
         method: "POST",
         headers: {
