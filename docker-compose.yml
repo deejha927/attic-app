@@ -5,7 +5,7 @@ services:
       context: ./backend
       dockerfile: ./Dockerfile
     ports:
-      - "7050:7050"
+      - "1000:1000"
   frontend:
     build:
       context: ./frontend
@@ -13,6 +13,6 @@ services:
     volumes:
       - ./frontend/src:/app/src
     ports:
-      - "7000:7000"
+      - "1050:1050"
     environment:
-      - PORT=7000
+      - PORT=1050

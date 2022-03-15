@@ -3,7 +3,7 @@ const fs = require('fs')
 const { createCanvas, loadImage } = require('canvas')
 var app = express()
 var cors = require('cors')
-const PORT = 7050
+const PORT = 1000
 
 app.use(express.json())
 app.use(cors())
