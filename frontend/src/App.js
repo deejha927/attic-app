@@ -18,8 +18,9 @@ function App() {
   const handleUrlChange = useCallback((value) => setValue(value), []);
   const testColorApi = (event) => {
     if (value !== "") {
+      setColor(event)
       const hex = (HSL2COLOR("hsla(" + color?.hue + "," + (color?.saturation * 100) + "%," + (color?.brightness * 100) + "%," + color?.alpha + ")"))
-      colorApi(hex?.rgba, value)
+      colorApi(hex?.hsla, value)
         .then((data) => {
           setImage(data?.imageBase)
           setLoading(false);
@@ -41,8 +42,7 @@ function App() {
             />
 
           </div>
-          <ColorPicker onChange={setColor} color={color} allowAlpha fullWidth={false} />
-          <Button outline onClick={testColorApi}>Generate Image</Button>
+          <ColorPicker onChange={testColorApi} color={color} allowAlpha fullWidth={false} />
           <div role="img" aria-labelledby="star_id" className='imgDiv'>
             {loading && (<div id="spinner"><Spinner accessibilityLabel="Spinner example" size="large" /></div>)}
             {!loading && (<img src={image} alt="images" />)}

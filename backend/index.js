@@ -51,11 +51,11 @@ app.post("/getcolor", (req, res) => {
     // Instantiate the canvas object
     const canvas = createCanvas(width, height);
     const context = canvas.getContext("2d");
-    context.fillStyle = data.color;
+    context.fillStyle = "#000";
     context.fillRect(0, 0, width, height);
     context.textAlign = 'center'
     context.textBaseline = 'middle';
-    context.fillStyle = '#fff'
+    context.fillStyle = data.color
     context.font = 'normal bold 40px sans-serif';
     var lines = wrapText(context, data.text, 200, 200, width);
     lines.forEach(function (line, i) {
