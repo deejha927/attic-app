@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require('fs')
-const { createCanvas, loadImage } = require('canvas')
+const { createCanvas, registerFont } = require('canvas')
+registerFont("./Lato-BoldItalic.ttf", { family: "latoBold" })
 var app = express()
 var cors = require('cors')
 const PORT = 1000
@@ -56,7 +57,7 @@ app.post("/getcolor", (req, res) => {
     context.textAlign = 'center'
     context.textBaseline = 'middle';
     context.fillStyle = data.color
-    context.font = 'normal bold 40px sans-serif';
+    context.font = "40px 'latoBold'";
     var lines = wrapText(context, data.text, 200, 200, width);
     lines.forEach(function (line, i) {
         if (i == 0) {
