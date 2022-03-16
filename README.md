@@ -11,3 +11,14 @@ Open [http://localhost:3000](http://localhost:4000) to view it in your browser.
 
 ### `Shopify Polaris`
 Open [Shopify-Polaris](https://polaris.shopify.com/components/get-started) to view it in your browser.
+
+### `Manual Installation`
+    git clone https://github.com/ransom12/attic-app.git
+    for Frontend:
+        cd frontend
+        npm install
+        npm start
+    for Backend:
+        cd backend
+        npm install
+        node .
