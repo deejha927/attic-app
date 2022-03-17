@@ -8,16 +8,18 @@ function App() {
 
   const [color, setColor] = useState({
     hue: 355,
-    brightness: 1,
-    saturation: 0.7,
-    alpha: 0.7
+    brightness: 0.56,
+    saturation: 0.86,
+    alpha: 1
   });
   const [value, setValue] = useState('');
   const [image, setImage] = useState("noimage.jpg");
   const [loading, setLoading] = useState(false)
+  const [display, setDisplay] = useState("none")
   const handleUrlChange = (value) => {
     setValue(value);
     if (value !== "") {
+      setDisplay("none")
       setLoading(true);
       const hex = (HSL2COLOR("hsla(" + color?.hue + "," + (color?.saturation * 100) + "%," + (color?.brightness * 100) + "%," + color?.alpha + ")"))
       colorApi(hex?.hsla, value)
@@ -26,6 +28,7 @@ function App() {
           setLoading(false);
         }, [])
     } else {
+      setDisplay("block")
       setImage("noimage.jpg")
     }
   }
@@ -34,6 +37,7 @@ function App() {
   const testColorApi = (event) => {
     setColor(event)
     if (value !== "") {
+      setDisplay("none")
       setLoading(true);
       const hex = (HSL2COLOR("hsla(" + color?.hue + "," + (color?.saturation * 100) + "%," + (color?.brightness * 100) + "%," + color?.alpha + ")"))
       colorApi(hex?.hsla, value)
@@ -41,6 +45,9 @@ function App() {
           setImage(data?.imageBase)
           setLoading(false);
         }, [])
+    } else {
+      setDisplay("block")
+      setImage("noimage.jpg")
     }
   }
   return (
@@ -58,8 +65,9 @@ function App() {
                   autoComplete="off"
 
                 />
-
+                <p style={{ color: "red", display: display }}>Field should not be empty*</p>
               </div>
+
               <ColorPicker onChange={testColorApi} color={color} allowAlpha fullWidth={false} />
               <div role="img" aria-labelledby="star_id" className='imgDiv'>
                 {loading && (<div id="spinner"><Spinner accessibilityLabel="Spinner example" size="large" /></div>)}
