@@ -25,6 +25,8 @@ function App() {
           setImage(data?.imageBase)
           setLoading(false);
         }, [])
+    } else {
+      setImage("noimage.jpg")
     }
   }
 
